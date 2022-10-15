@@ -17,6 +17,12 @@ chmod +x ./bin/docker-compose
 mv ./config/overleaf.rc ./config/overleaf.rc.bak
 sed '/SHARELATEX_LISTEN_IP/ c SHARELATEX_LISTEN_IP=0.0.0.0' ./config/overleaf.rc.bak | sed '/SHARELATEX_PORT/ c SHARELATEX_PORT=9002' > ./config/overleaf.rc
 
+echo "version: '2.2'
+services:
+    sharelatex:
+        environment:
+            PATH: \"/usr/local/texlive/2022/bin/`uname -i`-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > ./config/docker-compose.override.yml
+
 echo "Starting container..."
 ./bin/up -d
 
