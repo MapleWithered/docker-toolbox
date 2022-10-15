@@ -39,8 +39,8 @@ echo "version: '2.2'
 services:
     sharelatex:
         image: sharelatex/sharelatex:with-texlive-full
-	environment:
-	    PATH: \"/usr/local/texlive/2022/bin/`uname -i`-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > ./config/docker-compose.override.yml
+        environment:
+            PATH: \"/usr/local/texlive/2022/bin/`uname -i`-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > ./config/docker-compose.override.yml
 
 echo "Restarting services with new image..."
 ./bin/stop && ./bin/docker-compose rm -f sharelatex && ./bin/up -d
